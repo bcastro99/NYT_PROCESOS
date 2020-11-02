@@ -19,12 +19,5 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        setContentView(R.layout.activity_pantallaprincipal);
-        lista = findViewById(R.id.lista);
-        tareas = new DateFormatSymbols().getMonths();
-        ArrayAdapter<String> tareasAdapter = new ArrayAdapter<>(this, R.layout.rowtext,tareas);
-        lista.setAdapter(tareasAdapter);
-
-
     }
 }
