@@ -37,7 +37,6 @@ public class PantallaPrincipal extends AppCompatActivity {
 
         /* listview.setOnItemClickListener(new OnItemClickListener() {​​​​​
             @Overridepublic void onItemClick(AdapterView<?>adapter,View v, int position) {​​​​​
-
                 ItemClicked item = adapter.getItemAtPosition(position);
                 //Añade el código que quieras para tu item
             }​​​​​
