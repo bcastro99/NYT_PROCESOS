@@ -21,7 +21,7 @@ public class PantallaPrincipal extends AppCompatActivity {
         ArrayAdapter<String> tareasAdapter = new ArrayAdapter<>(this, R.layout.rowtext, tareas);
         lista.setAdapter(tareasAdapter);
         setContentView(R.layout.activity_pantallaprincipal);
-
+        getSupportActionBar().setElevation(0);
     }
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -34,7 +34,7 @@ public class PantallaPrincipal extends AppCompatActivity {
     public boolean onOptionsItemSelected(MenuItem item) {
 
         switch(item.getItemId()) {
-            case R.id.Tareas:
+            case R.id.Inicio:
                 return true;
             case R.id.Perfil:
                 return true;

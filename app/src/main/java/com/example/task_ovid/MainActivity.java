@@ -7,16 +7,21 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.widget.ListView;
 
+import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 
 
 public class MainActivity extends AppCompatActivity {
     ListView lista;
     String[] tareas;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        ActionBar actionbar= getSupportActionBar();
+        actionbar.setIcon(R.drawable.icono_app);
+
     }
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -30,7 +35,7 @@ public class MainActivity extends AppCompatActivity {
         Intent intent;
         switch(item.getItemId()) {
 
-            case R.id.Tareas:
+            case R.id.Inicio:
                  intent = new Intent(this,MainActivity.class);
                 startActivity(intent);;
             case R.id.Perfil:
