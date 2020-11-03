@@ -2,6 +2,7 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/start"
     android:layout_width="wrap_content"
     android:layout_height="match_parent"
     android:background="@drawable/fondo1"
@@ -11,15 +12,15 @@
 
     <ImageButton
         android:id="@+id/button_start"
-        android:layout_width="338dp"
-        android:layout_height="164dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:layout_alignParentStart="true"
         android:layout_alignParentEnd="true"
         android:layout_alignParentBottom="true"
-        android:layout_marginStart="39dp"
-        android:layout_marginEnd="34dp"
-        android:layout_marginBottom="121dp"
-        android:background="@color/material_on_primary_disabled"
-        android:contentDescription="@string/IBI"
-        app:srcCompat="@drawable/start_button" />
+        android:layout_marginStart="106dp"
+        android:layout_marginEnd="105dp"
+        android:layout_marginBottom="163dp"
+        android:background="@null"
+        android:contentDescription="@string/st_content"
+        app:srcCompat="@mipmap/start_button" />
 </RelativeLayout>
