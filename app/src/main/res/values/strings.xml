@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">Task-ovid</string>
+    <string name="boton_inicio">START</string>
 </resources>
