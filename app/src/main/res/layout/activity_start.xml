@@ -12,15 +12,16 @@
 
     <ImageButton
         android:id="@+id/button_start"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="100dp"
+        android:layout_height="150dp"
         android:layout_alignParentStart="true"
         android:layout_alignParentEnd="true"
         android:layout_alignParentBottom="true"
-        android:layout_marginStart="106dp"
-        android:layout_marginEnd="105dp"
-        android:layout_marginBottom="163dp"
+        android:layout_marginStart="32dp"
+        android:layout_marginEnd="36dp"
+        android:layout_marginBottom="121dp"
         android:background="@null"
         android:contentDescription="@string/st_content"
-        app:srcCompat="@mipmap/start_button" />
+        android:scaleType="fitXY"
+        app:srcCompat="@drawable/start_button" />
 </RelativeLayout>
