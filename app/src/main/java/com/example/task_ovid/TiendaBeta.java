@@ -1,14 +1,17 @@
 package com.example.task_ovid;
 
-import androidx.appcompat.app.AppCompatActivity;
-
+import android.content.Intent;
 import android.os.Bundle;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
-import android.widget.ImageButton;
 import android.widget.ListView;
 import android.widget.TextView;
+
+import androidx.appcompat.app.AppCompatActivity;
 
 public class TiendaBeta extends AppCompatActivity {
 
@@ -35,9 +38,34 @@ public class TiendaBeta extends AppCompatActivity {
             }
         });
 
-
     }
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        // Inflate the menu; this adds items to the action bar if it is present.
+        MenuInflater inflater = getMenuInflater();
+        inflater.inflate(R.menu.menu, menu);
+        return true;
+    }
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        Intent intent;
+        switch(item.getItemId()) {
 
+            case R.id.Inicio:
+                intent = new Intent(this,MainActivity.class);
+                startActivity(intent);;
+            case R.id.Perfil:
+                intent = new Intent(this,TiendaBeta.class);//Se debe cambiar y poner actividad de Perfil
+                startActivity(intent);;
+            case R.id.Tienda:
+                intent= new Intent(this,TiendaBeta.class);//Se debe cambiar y poner actividad de Tienda
+                startActivity(intent);
+            case R.id.Salir:
+                finishAffinity();
+
+        }
+        return super.onOptionsItemSelected(item);
+    }
 
 
 }

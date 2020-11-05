@@ -1,20 +1,18 @@
 package com.example.task_ovid;
 
-import androidx.annotation.RequiresApi;
-import androidx.appcompat.app.AppCompatActivity;
-
-import android.graphics.Color;
-import android.os.Build;
+import android.content.Intent;
 import android.os.Bundle;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
-import android.widget.Toast;
 
-import java.text.DateFormatSymbols;
+import androidx.appcompat.app.AppCompatActivity;
+
 import java.util.ArrayList;
-import java.util.zip.DataFormatException;
 
 
 public class MainActivity extends AppCompatActivity implements AdapterView.OnItemClickListener {
@@ -59,5 +57,32 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
         //actualiza la lista
         tareas.set(position,string);
         tareasAdapter.notifyDataSetChanged();
+    }
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        // Inflate the menu; this adds items to the action bar if it is present.
+        MenuInflater inflater = getMenuInflater();
+        inflater.inflate(R.menu.menu, menu);
+        return true;
+    }
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        Intent intent;
+        switch(item.getItemId()) {
+
+            case R.id.Inicio:
+                intent = new Intent(this,MainActivity.class);
+                startActivity(intent);;
+            case R.id.Perfil:
+                intent = new Intent(this,TiendaBeta.class);//Se debe cambiar y poner actividad de Perfil
+                startActivity(intent);;
+            case R.id.Tienda:
+                intent= new Intent(this,TiendaBeta.class);//Se debe cambiar y poner actividad de Tienda
+                startActivity(intent);
+            case R.id.Salir:
+                finishAffinity();
+
+        }
+        return super.onOptionsItemSelected(item);
     }
 }
