@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <item android:id="@+id/Inicio"  android:title="Inicio"
+        android:icon="@drawable/icono_home"
+        app:showAsAction="ifRoom"></item>
+    <item android:id="@+id/Tienda" android:title="Tienda"></item>
+    <item android:id="@+id/Perfil" android:title="Perfil" android:icon="@drawable/logo_perfil" app:showAsAction="ifRoom"></item>
+
+    <item android:id="@+id/Salir" android:title="Salir"></item>
+</menu>
