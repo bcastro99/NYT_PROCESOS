@@ -42,7 +42,7 @@ public class MainActivity extends AppCompatActivity {
                 intent = new Intent(this,MainActivity.class);//Se debe cambiar y poner actividad de Perfil
                 startActivity(intent);;
             case R.id.Tienda:
-                intent= new Intent(this,MainActivity.class);//Se debe cambiar y poner actividad de Tienda
+                intent= new Intent(this,TiendaBeta.class);//Se debe cambiar y poner actividad de Tienda
                 startActivity(intent);;
 
             case R.id.Salir:
