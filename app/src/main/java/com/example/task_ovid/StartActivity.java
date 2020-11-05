@@ -26,7 +26,7 @@ public class StartActivity extends AppCompatActivity {
     }
 
     public void Startup(){ // Metodo para que el boton comunique con la otra pantalla
-        Intent intent = new Intent(this,MainActivity.class);
+        Intent intent = new Intent(this,LoadScreenActivity.class);
         startActivity(intent);
     }
 }
