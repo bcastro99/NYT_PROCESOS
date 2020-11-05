@@ -32,7 +32,7 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
         lista.setAdapter(tareasAdapter);
         lista.setOnItemClickListener(this);
     }
-    private void llenarTareas(){
+    private void llenarTareas(){ //este método es para rellenar las listas, el 0 simboliza el contador
         tareas.add("salir con mascarilla 0");
         tareas.add("olvidarse la mascarilla 0");
         tareas.add("lavarse las manos 0");
@@ -42,11 +42,12 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
     @Override
     public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
         String t = parent.getItemAtPosition(position).toString();
+        //divide el string para poder cambiar el contador
         String[] parts = t.split(" ");
-
+        //incrementar el contador y actualizar el string
         int cont = Integer.parseInt(parts[parts.length-1]) + 1;
         parts[parts.length-1] = String.valueOf(cont);
-
+        //une el string de nuevo para colocarlo en la lista
         String string = "";
         for (int i = 0; i <= parts.length-1; i++){
             if (i == 0){
@@ -55,7 +56,7 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
                 string = string + " "+parts[i];
             }
         }
-
+        //actualiza la lista
         tareas.set(position,string);
         tareasAdapter.notifyDataSetChanged();
     }
