@@ -10,6 +10,7 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -46,25 +47,23 @@ public class TiendaBeta extends AppCompatActivity {
         inflater.inflate(R.menu.menu, menu);
         return true;
     }
-    @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        Intent intent;
-        switch(item.getItemId()) {
+        int id = item.getItemId();
+        if(R.id.main==id) {
+            Intent intent= new Intent(this,MainActivity.class);
+            startActivity(intent);
+        }else if (R.id.Perfil==id) {
+            Toast.makeText(getApplicationContext(), "En Construccion...", Toast.LENGTH_SHORT).show();
 
-            case R.id.Inicio:
-                intent = new Intent(this,MainActivity.class);
-                startActivity(intent);;
-            case R.id.Perfil:
-                intent = new Intent(this,TiendaBeta.class);//Se debe cambiar y poner actividad de Perfil
-                startActivity(intent);;
-            case R.id.Tienda:
-                intent= new Intent(this,TiendaBeta.class);//Se debe cambiar y poner actividad de Tienda
-                startActivity(intent);
-            case R.id.Salir:
-                finishAffinity();
-
+        }else if (R.id.Tienda== id) {
+            Intent intent2= new Intent(this,TiendaBeta.class);
+            startActivity(intent2);
+        }else if(R.id.Salir==id) {
+            finishAffinity();
         }
+
         return super.onOptionsItemSelected(item);
+
     }
 
 

@@ -4,4 +4,9 @@
     <string name="st_content">Botón para inicio de programa</string>
     <string name="tv_lscreen">0 %</string>
     <string name="sc_content">NYT Brand</string>
+    <string name="inicio">Inicio</string>
+    <string name="perfil">Perfil</string>
+    <string name="tienda">Tienda</string>
+    <string name="Salir">Salir</string>
+    <string name ="enConstruccion">En Construccion...</string>
 </resources>

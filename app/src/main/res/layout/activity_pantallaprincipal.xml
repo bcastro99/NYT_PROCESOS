@@ -45,4 +45,77 @@
         android:layout_marginBottom="462dp"
         android:background="@drawable/images2"
         android:contentDescription="TODO" />
+    <TextView
+        android:id="@+id/VidaTexto"
+        android:layout_marginStart="230dp"
+        android:layout_marginTop="40dp"
+        android:layout_marginEnd="20dp"
+        android:layout_width="161dp"
+        android:layout_height="20dp"
+        android:textAlignment="center"
+        android:text="Vida" />
+
+    <LinearLayout
+        android:layout_width="161dp"
+        android:layout_height="110dp"
+        android:layout_marginStart="230dp"
+        android:layout_marginTop="27dp"
+        android:layout_marginEnd="20dp"
+        android:layout_marginBottom="462dp"
+        android:orientation="horizontal">
+
+
+        <ProgressBar
+                android:id="@+id/Vida"
+                style="?android:attr/progressBarStyleHorizontal"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="0dp"
+                android:layout_marginTop="50dp"
+                android:background="#00FFFFFF"
+                android:contentDescription="Vida"
+                android:indeterminate="false"
+                android:elevation="20dp"
+                android:layerType="software"
+                android:max="100"
+                android:progress="100"
+                android:progressTint="#F44336" />
+    </LinearLayout>
+    <TextView
+        android:id="@+id/ExperienciaTexto"
+        android:layout_width="161dp"
+        android:layout_height="20dp"
+        android:textAlignment="center"
+        android:layout_marginStart="230dp"
+        android:layout_marginTop="130dp"
+        android:layout_marginEnd="20dp"
+        android:text="Experiencia" />
+
+    <LinearLayout
+        android:layout_width="161dp"
+        android:layout_height="110dp"
+        android:layout_marginStart="230dp"
+        android:layout_marginTop="100dp"
+        android:layout_marginEnd="20dp"
+        android:layout_marginBottom="462dp"
+        android:orientation="horizontal">
+
+
+
+        <ProgressBar
+            android:id="@+id/Experiencia"
+            style="?android:attr/progressBarStyleHorizontal"
+            android:layout_width="match_parent"
+            android:layout_height="25dp"
+            android:layout_marginTop="50dp"
+            android:background="#00FFFFFF"
+            android:contentDescription="Vida"
+            android:indeterminate="false"
+            android:layerType="software"
+            android:max="100"
+            android:progress="0"
+            android:progressTint="#F44336" />
+    </LinearLayout>
+
+
 </RelativeLayout>

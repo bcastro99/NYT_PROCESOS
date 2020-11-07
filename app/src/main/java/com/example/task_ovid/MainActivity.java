@@ -9,6 +9,7 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
+import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -18,7 +19,16 @@ import java.util.ArrayList;
 public class MainActivity extends AppCompatActivity implements AdapterView.OnItemClickListener {
     private ListView lista;
     private ArrayList<String> tareas;
+
+
+
+    private Integer vida;
+    private Integer experiencia;
     ArrayAdapter<String> tareasAdapter;
+
+    public MainActivity() {
+    }
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -58,6 +68,21 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
         tareas.set(position,string);
         tareasAdapter.notifyDataSetChanged();
     }
+    public Integer getVida() {
+        return vida;
+    }
+
+    public void setVida(Integer vida) {
+        this.vida = vida;
+    }
+
+    public Integer getExperiencia() {
+        return experiencia;
+    }
+
+    public void setExperiencia(Integer experiencia) {
+        this.experiencia = experiencia;
+    }
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
@@ -67,22 +92,21 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
     }
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        Intent intent;
-        switch(item.getItemId()) {
+        int id = item.getItemId();
+        if(R.id.main==id) {
+            Intent intent= new Intent(this,MainActivity.class);
+            startActivity(intent);
+        }else if (R.id.Perfil==id) {
+            Toast.makeText(getApplicationContext(), "En Construccion...", Toast.LENGTH_SHORT).show();
 
-            case R.id.Inicio:
-                intent = new Intent(this,MainActivity.class);
-                startActivity(intent);;
-            case R.id.Perfil:
-                intent = new Intent(this,TiendaBeta.class);//Se debe cambiar y poner actividad de Perfil
-                startActivity(intent);;
-            case R.id.Tienda:
-                intent= new Intent(this,TiendaBeta.class);//Se debe cambiar y poner actividad de Tienda
-                startActivity(intent);
-            case R.id.Salir:
-                finishAffinity();
-
+        }else if (R.id.Tienda== id) {
+            Intent intent2= new Intent(this,TiendaBeta.class);
+            startActivity(intent2);
+        }else if(R.id.Salir==id) {
+            finishAffinity();
         }
-        return super.onOptionsItemSelected(item);
+
+                return super.onOptionsItemSelected(item);
+
     }
 }
