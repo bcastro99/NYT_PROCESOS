@@ -1,4 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
+<!-- xml para ayudar a cabiar el color del texto de la lista de la pagina principal -->
 <TextView xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_height="?android:attr/listPreferredItemHeight"
     android:layout_width="fill_parent"

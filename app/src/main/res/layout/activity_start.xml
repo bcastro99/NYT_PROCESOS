@@ -9,7 +9,7 @@
     android:visibility="visible"
     tools:context=".StartActivity"
     tools:visibility="visible">
-
+    <!-- Botón de inicio que lleva a la pantalla principal -->
     <ImageButton
         android:id="@+id/button_start"
         android:layout_width="100dp"

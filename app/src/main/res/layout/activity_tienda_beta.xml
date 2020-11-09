@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:background="@color/fondo"
     tools:context=".TiendaBeta">
-
+    <!-- Lista con los elementos de la tienda -->
     <ListView
         android:id="@+id/lv1"
         android:layout_width="268dp"

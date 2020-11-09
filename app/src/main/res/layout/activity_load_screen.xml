@@ -7,7 +7,7 @@
     android:padding="16dp"
     android:background="@drawable/ls_wallpaper"
     tools:context=".LoadScreenActivity">
-
+    <!-- Para mostrar el texto de la barra de progreso -->
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -19,7 +19,7 @@
         android:layout_centerHorizontal="true"
         android:layout_above="@+id/progress_bar"/>
 
-
+    <!-- Para mostrar la barra de progreso -->
     <ProgressBar
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
