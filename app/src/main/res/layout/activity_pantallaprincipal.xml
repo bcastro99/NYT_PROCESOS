@@ -9,6 +9,7 @@
     tools:context=".MainActivity">
     <!-- Mostrar la lista con la que se puede interactuar -->
     <ListView
+        android:fontFamily="@font/ls_font"
         android:id="@+id/lista"
         android:layout_width="wrap_content"
         android:layout_height="433dp"
@@ -54,6 +55,7 @@
         android:layout_width="161dp"
         android:layout_height="20dp"
         android:textAlignment="center"
+        android:fontFamily="@font/ls_font"
         android:text="Vida" />
     <!-- Línea indicativa de la vida -->
     <!-- Línea indicativa de la experiencia -->
@@ -92,6 +94,7 @@
         android:layout_marginStart="230dp"
         android:layout_marginTop="130dp"
         android:layout_marginEnd="20dp"
+        android:fontFamily="@font/ls_font"
         android:text="Experiencia" />
 
     <LinearLayout
@@ -117,7 +120,22 @@
             android:max="100"
             android:progress="0"
             android:progressTint="#F44336" />
+
     </LinearLayout>
+
+    <TextView
+        android:id="@+id/NombreNivel"
+        android:layout_width="143dp"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/lista"
+        android:layout_alignParentEnd="true"
+        android:layout_marginTop="-210dp"
+        android:layout_marginEnd="33dp"
+        android:layout_marginBottom="38dp"
+        android:fontFamily="@font/ls_font"
+        android:text="NIVEL 1"
+        android:textColor="#000000"
+        android:textSize="25sp" />
 
 
 </RelativeLayout>

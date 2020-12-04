@@ -25,11 +25,13 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
     private ArrayList<String> tareas;
 
 
-    private int experiencia;
-    public static int maxVida=100;
+    private int maxExperiencia = 100;
+    public  int maxVida = 100;
     private int vida = maxVida;
     ProgressBar bv;
-    TextView tvV, tvE;
+    TextView nivelTexto;
+    private int experiencia=0;
+    private int nivel=1;
     ProgressBar be;
     ArrayAdapter<String> tareasAdapter;
 
@@ -53,6 +55,7 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
         tareas.add("- olvidarse la mascarilla 0");
         tareas.add("+ lavarse las manos 0");
         tareas.add("+ desinfectarse 0");
+        tareas.add("* Hacer PCR 0");
     }
 
     @Override
@@ -82,11 +85,36 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
             int vidaAux = vida - 25;
             setVida(vidaAux);
             bv.setProgress(vida,true);
+        }else{
+            incrementarExperiencia(t);
         }
     }
-    public int getVida() {
-        return vida;
+
+    public void incrementarExperiencia(String t){
+        be=(ProgressBar)findViewById(R.id.Experiencia);
+        be.setMax(maxExperiencia);
+        if(t.contains("+")){
+            experiencia += 10;
+
+        }else{
+            experiencia += 50;
+        }
+        subirNivel();
+        be.setProgress(experiencia,true);
     }
+
+    public void subirNivel(){
+        if (experiencia>=maxExperiencia){
+            int extra = experiencia-maxExperiencia;
+            nivel ++;
+            experiencia = extra;
+            maxExperiencia += 50;
+            be.setMax(maxExperiencia);
+            nivelTexto = (TextView)findViewById(R.id.NombreNivel);
+            nivelTexto.setText("NIVEL "+nivel);
+        }
+    }
+
 
     public void setVida(int vida) {
         if (vida>=0) {
@@ -96,13 +124,6 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
         }
     }
 
-    public int getExperiencia() {
-        return experiencia;
-    }
-
-    public void setExperiencia(Integer experiencia) {
-        this.experiencia = experiencia;
-    }
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
