@@ -8,4 +8,6 @@
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
     <color name="fondo">#09cb7b</color>
+    <color name="BarraVidaBorde">#A0A0A0</color>
+    <color name="BarraVidaSalud">#CB3234</color>
 </resources>
