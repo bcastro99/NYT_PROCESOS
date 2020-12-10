@@ -28,6 +28,7 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
     private int maxExperiencia = 100;
     public  int maxVida = 100;
     private int vida = maxVida;
+    private int experienciaTotal = 0;
     ProgressBar bv;
     TextView nivelTexto;
     private int experiencia=0;
@@ -95,9 +96,11 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
         be.setMax(maxExperiencia);
         if(t.contains("+")){
             experiencia += 10;
+            experienciaTotal +=10;
 
         }else{
             experiencia += 50;
+            experienciaTotal += 10;
         }
         subirNivel();
         be.setProgress(experiencia,true);
@@ -122,6 +125,18 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
         }else{
             this.vida = 0;
         }
+    }
+    public int getMaxExperiencia(){
+        return maxExperiencia;
+    }
+    public int getVida(){
+        return vida;
+    }
+    public int getNivel(){
+        return nivel;
+    }
+    public int getExperiencia(){
+        return experiencia;
     }
 
     @Override
