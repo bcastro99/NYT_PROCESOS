@@ -8,7 +8,7 @@
     tools:context=".TiendaBeta">
 
     <ImageButton
-        android:id="@+id/imageButton3"
+        android:id="@+id/Mascarilla"
         android:layout_width="127dp"
         android:layout_height="127dp"
         android:scaleType="fitXY"
@@ -17,7 +17,7 @@
         tools:layout_editor_absoluteY="288dp" />
 
     <ImageButton
-        android:id="@+id/imageButton4"
+        android:id="@+id/SuperMascarilla"
         android:layout_width="127dp"
         android:layout_height="127dp"
         android:scaleType="fitXY"
@@ -26,7 +26,7 @@
         tools:layout_editor_absoluteY="475dp" />
 
     <ImageButton
-        android:id="@+id/imageButton5"
+        android:id="@+id/Pocion"
         android:layout_width="127dp"
         android:layout_height="127dp"
         android:scaleType="fitXY"
@@ -35,7 +35,7 @@
         tools:layout_editor_absoluteY="288dp" />
 
     <ImageButton
-        android:id="@+id/imageButton6"
+        android:id="@+id/SuperPocion"
         android:layout_width="127dp"
         android:layout_height="127dp"
         android:scaleType="fitXY"
@@ -118,7 +118,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="1000"
-        tools:layout_editor_absoluteX="248dp"
-        tools:layout_editor_absoluteY="154dp" />
+        tools:layout_editor_absoluteX="264dp"
+        tools:layout_editor_absoluteY="149dp" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
