@@ -12,7 +12,7 @@
         android:layout_width="127dp"
         android:layout_height="127dp"
         android:scaleType="fitXY"
-        app:srcCompat="@drawable/Mascarilla1"
+        app:srcCompat="@drawable/mascarilla1"
         tools:layout_editor_absoluteX="237dp"
         tools:layout_editor_absoluteY="288dp" />
 
@@ -21,7 +21,7 @@
         android:layout_width="127dp"
         android:layout_height="127dp"
         android:scaleType="fitXY"
-        app:srcCompat="@drawable/Mascarilla2"
+        app:srcCompat="@drawable/mascarilla2"
         tools:layout_editor_absoluteX="237dp"
         tools:layout_editor_absoluteY="475dp" />
 
@@ -30,7 +30,7 @@
         android:layout_width="127dp"
         android:layout_height="127dp"
         android:scaleType="fitXY"
-        app:srcCompat="@drawable/Pocion"
+        app:srcCompat="@drawable/pocion"
         tools:layout_editor_absoluteX="61dp"
         tools:layout_editor_absoluteY="288dp" />
 
@@ -39,7 +39,7 @@
         android:layout_width="127dp"
         android:layout_height="127dp"
         android:scaleType="fitXY"
-        app:srcCompat="@drawable/SuperPocion"
+        app:srcCompat="@drawable/superpocion"
         tools:layout_editor_absoluteX="61dp"
         tools:layout_editor_absoluteY="475dp" />
 
@@ -84,7 +84,7 @@
         android:layout_width="50dp"
         android:layout_height="50dp"
         android:scaleType="fitXY"
-        app:srcCompat="@drawable/Vida"
+        app:srcCompat="@drawable/vida"
         tools:layout_editor_absoluteX="61dp"
         tools:layout_editor_absoluteY="132dp" />
 
@@ -93,7 +93,7 @@
         android:layout_width="50dp"
         android:layout_height="50dp"
         android:scaleType="fitXY"
-        app:srcCompat="@drawable/Moneda"
+        app:srcCompat="@drawable/moneda"
         tools:layout_editor_absoluteX="314dp"
         tools:layout_editor_absoluteY="132dp" />
 
