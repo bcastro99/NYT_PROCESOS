@@ -127,7 +127,7 @@
         android:id="@+id/NombreNivel"
         android:layout_width="143dp"
         android:layout_height="wrap_content"
-        android:layout_above="@+id/lista"
+        android:layout_above="@+id/layoutMonedas"
         android:layout_alignParentEnd="true"
         android:layout_marginTop="-210dp"
         android:layout_marginEnd="33dp"
@@ -136,6 +136,29 @@
         android:text="NIVEL 1"
         android:textColor="#000000"
         android:textSize="25sp" />
+    <LinearLayout
+        android:layout_width="161dp"
+        android:layout_height="50dp"
+        android:layout_marginLeft="210dp"
+        android:id="@+id/layoutMonedas"
+        android:layout_above="@+id/lista">
+        <TextView
+            android:id="@+id/imagenMoneda"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_marginBottom="14dp"
+            android:background="@drawable/moneda_taskOvid"
+            android:textAlignment="center" />
+        <TextView
+            android:id="@+id/monedasActuales"
+            android:layout_width="121dp"
+            android:layout_height="30dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginLeft="10dp"
+            android:text="000000"
+            android:textAlignment="center"
+            android:textSize="28dp"/>
+    </LinearLayout>
 
 
 </RelativeLayout>
