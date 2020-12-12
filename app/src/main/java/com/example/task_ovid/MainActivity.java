@@ -1,13 +1,11 @@
 package com.example.task_ovid;
 
 import android.content.Intent;
-import android.graphics.Canvas;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
-import android.view.WindowManager;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
@@ -29,12 +27,15 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
     public  int maxVida = 100;
     private int vida = maxVida;
     private int experienciaTotal = 0;
-    ProgressBar bv;
-    TextView nivelTexto;
+    private ProgressBar bv;
+    private TextView nivelTexto;
     private int experiencia=0;
     private int nivel=1;
-    ProgressBar be;
-    ArrayAdapter<String> tareasAdapter;
+    private ProgressBar be;
+    private TextView monedas;
+    private ArrayAdapter<String> tareasAdapter;
+
+    private int monedasUsuario=0;
 
     public MainActivity() {
     }
@@ -86,9 +87,13 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
             int vidaAux = vida - 25;
             setVida(vidaAux);
             bv.setProgress(vida,true);
+            if (vidaAux<=0){
+                Toast.makeText(getApplicationContext(), "Con estos habitos te vas a contagiar ;(", Toast.LENGTH_LONG).show();
+            }
         }else{
             incrementarExperiencia(t);
         }
+
     }
 
     public void incrementarExperiencia(String t){
@@ -115,7 +120,18 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
             be.setMax(maxExperiencia);
             nivelTexto = (TextView)findViewById(R.id.NombreNivel);
             nivelTexto.setText("NIVEL "+nivel);
+            Toast.makeText(getApplicationContext(), "Has subido de nivel. Enhorabuena", Toast.LENGTH_LONG).show();
+            Toast.makeText(getApplicationContext(), "Has ganado 100 monedas", Toast.LENGTH_LONG).show();
+
+            incrementarMonedas(100);
         }
+    }
+
+    public void incrementarMonedas(int cantidad){
+        monedas = (TextView)findViewById(R.id.monedasActuales);
+        monedasUsuario+=cantidad;
+        monedas.setText(""+ monedasUsuario);
+
     }
 
 
@@ -137,6 +153,13 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
     }
     public int getExperiencia(){
         return experiencia;
+    }
+    public int getMonedasUsuario() {
+        return monedasUsuario;
+    }
+
+    public void setMonedasUsuario(int monedasUsuario) {
+        this.monedasUsuario = monedasUsuario;
     }
 
     @Override
