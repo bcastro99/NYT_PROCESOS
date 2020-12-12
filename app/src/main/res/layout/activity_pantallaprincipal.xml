@@ -147,7 +147,7 @@
             android:layout_width="30dp"
             android:layout_height="30dp"
             android:layout_marginBottom="14dp"
-            android:background="@drawable/moneda_taskOvid"
+            android:background="@drawable/moneda_taskovid"
             android:textAlignment="center" />
         <TextView
             android:id="@+id/monedasActuales"
