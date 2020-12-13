@@ -142,12 +142,13 @@
         android:layout_marginLeft="210dp"
         android:id="@+id/layoutMonedas"
         android:layout_above="@+id/lista">
+
         <TextView
             android:id="@+id/imagenMoneda"
             android:layout_width="30dp"
             android:layout_height="30dp"
             android:layout_marginBottom="14dp"
-            android:background="@drawable/moneda_taskovid"
+            android:background="@drawable/moneda"
             android:textAlignment="center" />
         <TextView
             android:id="@+id/monedasActuales"
