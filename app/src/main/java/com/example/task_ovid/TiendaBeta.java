@@ -24,11 +24,11 @@ public class TiendaBeta extends AppCompatActivity {
     private TextView hp;
     private TextView hpMax;
     private TextView coins;
-    private int vidaAux;
-    private int monedasAux;
-    private int vidaMaxAux;
+    private static int vidaAux;
+    private static int monedasAux;
+    private static int vidaMaxAux;
     private MainActivity x;
-    private double resAux;
+    private static double resAux;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -89,11 +89,13 @@ public class TiendaBeta extends AppCompatActivity {
                     vidaAux = vidaAux + 20;
                 }
                 x.setVida(vidaAux);
+                hp.setText(String.valueOf(vidaAux));
             }else{
                 Toast.makeText(getApplicationContext(), "Estás pobre BRO", Toast.LENGTH_LONG).show();
             }
             monedasAux = monedasAux-100;
             x.setMonedasUsuario(monedasAux);
+            coins.setText(String.valueOf(monedasAux));
         }else{
             Toast.makeText(getApplicationContext(), "Ya estás a tope jefe de equipo", Toast.LENGTH_LONG).show();
         }
@@ -108,11 +110,13 @@ public class TiendaBeta extends AppCompatActivity {
                     vidaAux = vidaAux + 60;
                 }
                 x.setVida(vidaAux);
+                hp.setText(String.valueOf(vidaAux));
             }else{
                 Toast.makeText(getApplicationContext(), "Estás pobre BRO", Toast.LENGTH_LONG).show();
             }
             monedasAux = monedasAux-300;
             x.setMonedasUsuario(monedasAux);
+            coins.setText(String.valueOf(monedasAux));
         }else{
             Toast.makeText(getApplicationContext(), "Ya estás a tope jefe de equipo", Toast.LENGTH_LONG).show();
         }
@@ -125,6 +129,7 @@ public class TiendaBeta extends AppCompatActivity {
                 monedasAux = monedasAux -200;
                 x.setMonedasUsuario(monedasAux);
                 x.setResistencia(resAux);
+                coins.setText(String.valueOf(monedasAux));
             } else{
                 Toast.makeText(getApplicationContext(), "Estás pobre BRO", Toast.LENGTH_LONG).show();
             }
@@ -140,12 +145,37 @@ public class TiendaBeta extends AppCompatActivity {
                 monedasAux = monedasAux -1500;
                 x.setMonedasUsuario(monedasAux);
                 x.setResistencia(resAux);
+                coins.setText(String.valueOf(monedasAux));
             } else{
                 Toast.makeText(getApplicationContext(), "Estás pobre BRO", Toast.LENGTH_LONG).show();
             }
         }else{
             Toast.makeText(getApplicationContext(), "Ya tienes una, para que quieres mas", Toast.LENGTH_LONG).show();
         }
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        // Inflate the menu; this adds items to the action bar if it is present.
+        MenuInflater inflater = getMenuInflater();
+        inflater.inflate(R.menu.menu, menu);
+        return true;
+    }
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        int id = item.getItemId();
+        if(R.id.main==id) {
+            Intent intent= new Intent(this,MainActivity.class);
+            startActivity(intent);
+        }else if (R.id.Perfil==id) {
+            Toast.makeText(getApplicationContext(), "En Construccion...", Toast.LENGTH_SHORT).show();
+
+        }else if(R.id.Salir==id) {
+            finishAffinity();
+        }
+
+        return super.onOptionsItemSelected(item);
+
     }
 
 }
