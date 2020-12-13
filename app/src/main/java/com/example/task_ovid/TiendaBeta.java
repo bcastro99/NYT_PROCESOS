@@ -35,6 +35,12 @@ public class TiendaBeta extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_tienda_beta);
 
+        x=new MainActivity();
+        this.vidaAux = x.getVida();
+        this.monedasAux = x.getMonedasUsuario();
+        this.vidaMaxAux = x.getMaxVida();
+        this.resAux = x.getResistencia();
+
         p1=(ImageButton)findViewById(R.id.pocion1);
         p1.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -64,17 +70,13 @@ public class TiendaBeta extends AppCompatActivity {
             }
         });
         hp = (TextView)findViewById(R.id.vida);
-        hp.setText(vidaAux);
+        hp.setText(String.valueOf(vidaAux));
         hpMax = (TextView)findViewById(R.id.maxvida);
-        hpMax.setText(vidaMaxAux);
+        hpMax.setText(String.valueOf(vidaMaxAux));
         coins = (TextView)findViewById(R.id.monedas);
-        coins.setText(monedasAux);
+        coins.setText(String.valueOf(monedasAux));
 
-        x=new MainActivity();
-        this.vidaAux = x.getVida();
-        this.monedasAux = x.getMonedasUsuario();
-        this.vidaMaxAux = x.getMaxVida();
-        this.resAux = x.getResistencia();
+
     }
 
 
