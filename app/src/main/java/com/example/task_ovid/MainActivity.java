@@ -24,20 +24,20 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
     private ArrayList<String> tareas;
 
 
-    private int maxExperiencia = 100;
-    public  int maxVida = 100;
-    private int vida = maxVida;
+    private static int maxExperiencia = 100;
+    public  static int maxVida = 100;
+    private static int vida = maxVida;
     private int experienciaTotal = 0;
     private ProgressBar bv;
     private TextView nivelTexto;
-    private int experiencia=0;
-    private int nivel=1;
+    private static int experiencia=0;
+    private static int nivel=1;
     private ProgressBar be;
     private TextView monedas;
     private ArrayAdapter<String> tareasAdapter;
-    private double resistencia=1;
-    private int monedasUsuario=0;
-    private int restaAux;
+    private static double resistencia=1;
+    private static int monedasUsuario=0;
+    private static int restaAux;
 
 
     public MainActivity() {
@@ -146,36 +146,36 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
             this.vida = 0;
         }
     }
-    public int getMaxExperiencia(){
+    public static int getMaxExperiencia(){
         return maxExperiencia;
     }
-    public int getVida(){
+    public static int getVida(){
         return vida;
     }
-    public int getNivel(){
+    public static int getNivel(){
         return nivel;
     }
-    public int getExperiencia(){
+    public static int getExperiencia(){
         return experiencia;
     }
 
-    public int getMaxVida() {
+    public static int getMaxVida() {
         return maxVida;
     }
 
-    public int getMonedasUsuario() {
+    public static int getMonedasUsuario() {
         return monedasUsuario;
     }
 
-    public void setMonedasUsuario(int monedasUsuario) {
+    public  void setMonedasUsuario(int monedasUsuario) {
         this.monedasUsuario = monedasUsuario;
     }
 
-    public double getResistencia() {
+    public static double getResistencia() {
         return resistencia;
     }
 
-    public void setResistencia(double resistencia) {
+    public  void setResistencia(double resistencia) {
         this.resistencia = resistencia;
     }
 
