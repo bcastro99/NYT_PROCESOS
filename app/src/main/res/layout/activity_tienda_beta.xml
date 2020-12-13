@@ -8,7 +8,7 @@
     tools:context=".TiendaBeta">
 
     <ImageButton
-        android:id="@+id/Mascarilla"
+        android:id="@+id/masc1"
         android:layout_width="127dp"
         android:layout_height="127dp"
         android:scaleType="fitXY"
@@ -17,7 +17,7 @@
         tools:layout_editor_absoluteY="288dp" />
 
     <ImageButton
-        android:id="@+id/SuperMascarilla"
+        android:id="@+id/masc2"
         android:layout_width="127dp"
         android:layout_height="127dp"
         android:scaleType="fitXY"
@@ -26,7 +26,7 @@
         tools:layout_editor_absoluteY="475dp" />
 
     <ImageButton
-        android:id="@+id/Pocion"
+        android:id="@+id/pocion1"
         android:layout_width="127dp"
         android:layout_height="127dp"
         android:scaleType="fitXY"
@@ -35,7 +35,7 @@
         tools:layout_editor_absoluteY="288dp" />
 
     <ImageButton
-        android:id="@+id/SuperPocion"
+        android:id="@+id/pocion2"
         android:layout_width="127dp"
         android:layout_height="127dp"
         android:scaleType="fitXY"
