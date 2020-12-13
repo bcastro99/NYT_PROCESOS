@@ -1,5 +1,6 @@
 package com.example.task_ovid;
 
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
@@ -28,12 +29,12 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
     public  static int maxVida = 100;
     private static int vida = maxVida;
     private int experienciaTotal = 0;
-    private ProgressBar bv;
+    private static ProgressBar bv;
     private TextView nivelTexto;
     private static int experiencia=0;
     private static int nivel=1;
-    private ProgressBar be;
-    private TextView monedas;
+    public  static ProgressBar be;
+    private static TextView monedas;
     private ArrayAdapter<String> tareasAdapter;
     private static double resistencia=1;
     private static int monedasUsuario=0;
@@ -54,7 +55,9 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
         lista.setAdapter(tareasAdapter);
         lista.setOnItemClickListener(this);
 
+
     }
+
     private void llenarTareas(){ //este método es para rellenar las listas, el 0 simboliza el contador
         tareas.add("+ salir con mascarilla 0");
         tareas.add("- olvidarse la mascarilla 0");
@@ -120,7 +123,7 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
             int extra = experiencia-maxExperiencia;
             nivel ++;
             experiencia = extra;
-            maxExperiencia += 50;
+            maxExperiencia += 20;
             be.setMax(maxExperiencia);
             nivelTexto = (TextView)findViewById(R.id.NombreNivel);
             nivelTexto.setText("NIVEL "+nivel);
@@ -139,12 +142,13 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
     }
 
 
-    public void setVida(int vida) {
+    public static void setVida(int v) {
         if (vida>=0) {
-            this.vida = vida;
+            vida = v;
         }else{
-            this.vida = 0;
+            vida = 0;
         }
+        bv.setProgress(vida,true);
     }
     public static int getMaxExperiencia(){
         return maxExperiencia;
@@ -167,8 +171,9 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
         return monedasUsuario;
     }
 
-    public  void setMonedasUsuario(int monedasUsuario) {
-        this.monedasUsuario = monedasUsuario;
+    public  static void setMonedasUsuario(int m) {
+        monedasUsuario = m;
+        monedas.setText(""+ monedasUsuario);
     }
 
     public static double getResistencia() {
@@ -191,13 +196,14 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
         int id = item.getItemId();
         if(R.id.main==id) {
             Intent intent= new Intent(this,MainActivity.class);
-            startActivity(intent);
+            intent.setFlags(Intent.FLAG_ACTIVITY_REORDER_TO_FRONT);
+            startActivityIfNeeded(intent, 0);
         }else if (R.id.Perfil==id) {
             Toast.makeText(getApplicationContext(), "En Construccion...", Toast.LENGTH_SHORT).show();
 
         }else if (R.id.Tienda== id) {
-            Intent intent2= new Intent(this,TiendaBeta.class);
-            startActivity(intent2);
+            Intent intent= new Intent(this,TiendaBeta.class);
+            startActivity(intent);
         }else if(R.id.Salir==id) {
             finishAffinity();
         }

@@ -131,7 +131,7 @@
         android:layout_alignParentEnd="true"
         android:layout_marginTop="-210dp"
         android:layout_marginEnd="33dp"
-        android:layout_marginBottom="38dp"
+        android:layout_marginBottom="20dp"
         android:fontFamily="@font/ls_font"
         android:text="NIVEL 1"
         android:textColor="#000000"

@@ -166,7 +166,8 @@ public class TiendaBeta extends AppCompatActivity {
         int id = item.getItemId();
         if(R.id.main==id) {
             Intent intent= new Intent(this,MainActivity.class);
-            startActivity(intent);
+            intent.setFlags(Intent.FLAG_ACTIVITY_REORDER_TO_FRONT);
+            startActivityIfNeeded(intent, 0);
         }else if (R.id.Perfil==id) {
             Toast.makeText(getApplicationContext(), "En Construccion...", Toast.LENGTH_SHORT).show();
 
