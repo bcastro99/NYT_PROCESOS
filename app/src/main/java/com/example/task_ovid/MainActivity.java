@@ -14,6 +14,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.math.MathUtils;
 
 import java.util.ArrayList;
 
@@ -34,8 +35,10 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
     private ProgressBar be;
     private TextView monedas;
     private ArrayAdapter<String> tareasAdapter;
-
+    private double resistencia=1;
     private int monedasUsuario=0;
+    private int restaAux;
+
 
     public MainActivity() {
     }
@@ -84,7 +87,8 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
         bv=(ProgressBar)findViewById(R.id.Vida);
         bv.setMax(maxVida);
         if (t.contains("-")){
-            int vidaAux = vida - 25;
+            restaAux = (int)(25 * resistencia);
+            int vidaAux = vida - restaAux;
             setVida(vidaAux);
             bv.setProgress(vida,true);
             if (vidaAux<=0){
@@ -154,12 +158,25 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
     public int getExperiencia(){
         return experiencia;
     }
+
+    public int getMaxVida() {
+        return maxVida;
+    }
+
     public int getMonedasUsuario() {
         return monedasUsuario;
     }
 
     public void setMonedasUsuario(int monedasUsuario) {
         this.monedasUsuario = monedasUsuario;
+    }
+
+    public double getResistencia() {
+        return resistencia;
+    }
+
+    public void setResistencia(double resistencia) {
+        this.resistencia = resistencia;
     }
 
     @Override
