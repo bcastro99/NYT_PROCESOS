@@ -200,9 +200,11 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
             startActivityIfNeeded(intent, 0);
         }else if (R.id.Perfil==id) {
             Toast.makeText(getApplicationContext(), "En Construccion...", Toast.LENGTH_SHORT).show();
-
         }else if (R.id.Tienda== id) {
             Intent intent= new Intent(this,TiendaBeta.class);
+            startActivity(intent);
+        }else if (R.id.menuAyuda == id) {
+            Intent intent= new Intent(this,menuAyuda.class);
             startActivity(intent);
         }else if(R.id.Salir==id) {
             finishAffinity();

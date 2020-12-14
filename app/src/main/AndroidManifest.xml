@@ -9,22 +9,24 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.Taskovid">
-      
-        <activity android:name=".LoadScreenActivity" android:theme="@style/Theme.AppCompat.NoActionBar"/>
-        <activity android:name=".StartActivity" android:theme="@style/Theme.AppCompat.NoActionBar"/>
+        <activity android:name=".menuAyuda"></activity>
+        <activity
+            android:name=".LoadScreenActivity"
+            android:theme="@style/Theme.AppCompat.NoActionBar" />
+        <activity
+            android:name=".StartActivity"
+            android:theme="@style/Theme.AppCompat.NoActionBar" />
         <activity android:name=".MainActivity" />
-        <activity android:name=".SplashScreenActivity" android:theme="@style/Theme.AppCompat.NoActionBar">
-          <intent-filter>
+        <activity
+            android:name=".SplashScreenActivity"
+            android:theme="@style/Theme.AppCompat.NoActionBar">
+            <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".TiendaBeta"/>
-
-      
-           
+        <activity android:name=".TiendaBeta" />
     </application>
 
 </manifest>
-      
