@@ -102,7 +102,7 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
         }
 
     }
-
+//Acción que se ejecuta cuando se realiza una buena acción
     public void incrementarExperiencia(String t){
         be=(ProgressBar)findViewById(R.id.Experiencia);
         be.setMax(maxExperiencia);
@@ -117,7 +117,7 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
         subirNivel();
         be.setProgress(experiencia,true);
     }
-
+//Cuando sube de nivel el usuario se establece la barra de nivel y las monedas
     public void subirNivel(){
         if (experiencia>=maxExperiencia){
             int extra = experiencia-maxExperiencia;
@@ -133,7 +133,7 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
             incrementarMonedas(100);
         }
     }
-
+//Incrementa las monedas, se usa al subir de nivel
     public void incrementarMonedas(int cantidad){
         monedas = (TextView)findViewById(R.id.monedasActuales);
         monedasUsuario+=cantidad;
@@ -141,7 +141,7 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
 
     }
 
-
+//Establece la vida del jugador al salir de la tienda
     public static void setVida(int v) {
         if (vida>=0) {
             vida = v;
@@ -184,6 +184,7 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
         this.resistencia = resistencia;
     }
 
+//Para mostrar el menu de opciones
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.

@@ -34,13 +34,13 @@ public class TiendaBeta extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_tienda_beta);
-
+//Para conseguir las monedas del main
         x=new MainActivity();
         this.vidaAux = x.getVida();
         this.monedasAux = x.getMonedasUsuario();
         this.vidaMaxAux = x.getMaxVida();
         this.resAux = x.getResistencia();
-
+//Estos métodos esperan a que hagas click sobre los productos de la tienda
         p1=(ImageButton)findViewById(R.id.pocion1);
         p1.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -79,7 +79,7 @@ public class TiendaBeta extends AppCompatActivity {
 
     }
 
-
+//Comprueba la vida del usuario y si es menor que 100 vende la pócima, igual con la pócima super
     public void pocima(int vidaAux, int vidaMaxAux, int monedasAux){
         if (vidaAux < vidaMaxAux){
             if (monedasAux >= 100){
@@ -121,7 +121,7 @@ public class TiendaBeta extends AppCompatActivity {
             Toast.makeText(getApplicationContext(), "Ya estás a tope jefe de equipo", Toast.LENGTH_LONG).show();
         }
     }
-
+//Igual que las pocimas pero suma resistencia al usuario
     public void mascarilla(int monedasAux, double resAux){
         if (resAux == 1){
             if (monedasAux >= 200) {
@@ -153,7 +153,7 @@ public class TiendaBeta extends AppCompatActivity {
             Toast.makeText(getApplicationContext(), "Ya tienes una, para que quieres mas", Toast.LENGTH_LONG).show();
         }
     }
-
+//Para implementar el menu de la app
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
@@ -170,7 +170,9 @@ public class TiendaBeta extends AppCompatActivity {
             startActivityIfNeeded(intent, 0);
         }else if (R.id.Perfil==id) {
             Toast.makeText(getApplicationContext(), "En Construccion...", Toast.LENGTH_SHORT).show();
-
+        }else if (R.id.menuAyuda == id) {
+                Intent intent= new Intent(this,menuAyuda.class);
+                startActivity(intent);
         }else if(R.id.Salir==id) {
             finishAffinity();
         }
