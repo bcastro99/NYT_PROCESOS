@@ -59,11 +59,17 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
     }
 
     private void llenarTareas(){ //este método es para rellenar las listas, el 0 simboliza el contador
+        tareas.add("* Hacer PCR 0");
         tareas.add("+ salir con mascarilla 0");
-        tareas.add("- olvidarse la mascarilla 0");
         tareas.add("+ lavarse las manos 0");
         tareas.add("+ desinfectarse 0");
-        tareas.add("* Hacer PCR 0");
+        tareas.add("+ evitar aglomeraciones 0");
+        tareas.add("+ quedarse en casa 0");
+        tareas.add("- olvidarse la mascarilla 0");
+        tareas.add("- Llegar a casa y no lavarme las manos 0");
+        tareas.add("- Frotarme los ojos o llevarme las manos a la boca en la calle 0");
+        tareas.add("- Estar con mis amigos sin mascarilla 0");
+        tareas.add("- Salir de fiesta 0");
     }
 
     @Override
