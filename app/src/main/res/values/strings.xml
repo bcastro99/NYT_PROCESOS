@@ -8,5 +8,15 @@
     <string name="perfil">Perfil</string>
     <string name="tienda">Tienda</string>
     <string name="Salir">Salir</string>
-    <string name ="enConstruccion">En Construccion...</string>
+    <string name="enConstruccion">En Construccion...</string>
+    <string name="menuAyuda">Menu de ayuda</string>
+    <string name="textoExplicativo">Bienvenidos a la sección de ayuda de TaskOvid. Aquí resolveremos todas las dudas que te puedan surgir a lo largo de esta gran aventura contra el covid.
+        Antes de empezar con las preguntas más frecuentes, vamos a explicar el objetivo del juego. Para combatir este virus que afecta a nivel mundial a millones de personas, debemos completar una serie de tareas que se muestran en la pantalla principal. Dependiendo de la tarea que se vaya a realizar, esta nos sumara experiencia o nos restara vida. El objetivo es subir de nivel sin perder ningún punto de vida. En el caso en el que perdamos vida, tenemos una tienda incorporada donde se podra comprar pociones para regenerar vida, o mascarillas para subir de nivel, todo comprado con monedas que vamos recibiendo al subir de nivel.
+    </string>
+    <string name="pregunta1">¿Como se pueden conseguir monedas ademas de subiendo de nivel?</string>
+    <string name="respuesta1">De momento no esta implementado, pero en un futuro se conseguiran monedas completando tareas.</string>
+    <string name="pregunta2">¿Si la vida llega a 0 que ocurre?</string>
+    <string name="respuesta2">En este caso, el juego termina y debes volver a empezar tu aventura.</string>
+    <string name="pregunta3">¿Cuesta mas subir de nivel cada vez que completas uno?</string>
+    <string name="respuesta3">Cuanto mas subes de nivel, mas dificil es alcanzar el proximo</string>
 </resources>

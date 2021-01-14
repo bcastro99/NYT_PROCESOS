@@ -1,5 +1,6 @@
 package com.example.task_ovid;
 
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
@@ -14,6 +15,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.math.MathUtils;
 
 import java.util.ArrayList;
 
@@ -23,19 +25,21 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
     private ArrayList<String> tareas;
 
 
-    private int maxExperiencia = 100;
-    public  int maxVida = 100;
-    private int vida = maxVida;
+    private static int maxExperiencia = 100;
+    public  static int maxVida = 100;
+    private static int vida = maxVida;
     private int experienciaTotal = 0;
-    private ProgressBar bv;
+    private static ProgressBar bv;
     private TextView nivelTexto;
-    private int experiencia=0;
-    private int nivel=1;
-    private ProgressBar be;
-    private TextView monedas;
+    private static int experiencia=0;
+    private static int nivel=1;
+    public  static ProgressBar be;
+    private static TextView monedas;
     private ArrayAdapter<String> tareasAdapter;
+    private static double resistencia=1;
+    private static int monedasUsuario=0;
+    private static int restaAux;
 
-    private int monedasUsuario=0;
 
     public MainActivity() {
     }
@@ -51,7 +55,9 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
         lista.setAdapter(tareasAdapter);
         lista.setOnItemClickListener(this);
 
+
     }
+
     private void llenarTareas(){ //este método es para rellenar las listas, el 0 simboliza el contador
         tareas.add("+ salir con mascarilla 0");
         tareas.add("- olvidarse la mascarilla 0");
@@ -84,7 +90,8 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
         bv=(ProgressBar)findViewById(R.id.Vida);
         bv.setMax(maxVida);
         if (t.contains("-")){
-            int vidaAux = vida - 25;
+            restaAux = (int)(25 * resistencia);
+            int vidaAux = vida - restaAux;
             setVida(vidaAux);
             bv.setProgress(vida,true);
             if (vidaAux<=0){
@@ -95,7 +102,7 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
         }
 
     }
-
+//Acción que se ejecuta cuando se realiza una buena acción
     public void incrementarExperiencia(String t){
         be=(ProgressBar)findViewById(R.id.Experiencia);
         be.setMax(maxExperiencia);
@@ -110,13 +117,13 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
         subirNivel();
         be.setProgress(experiencia,true);
     }
-
+//Cuando sube de nivel el usuario se establece la barra de nivel y las monedas
     public void subirNivel(){
         if (experiencia>=maxExperiencia){
             int extra = experiencia-maxExperiencia;
             nivel ++;
             experiencia = extra;
-            maxExperiencia += 50;
+            maxExperiencia += 20;
             be.setMax(maxExperiencia);
             nivelTexto = (TextView)findViewById(R.id.NombreNivel);
             nivelTexto.setText("NIVEL "+nivel);
@@ -126,7 +133,7 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
             incrementarMonedas(100);
         }
     }
-
+//Incrementa las monedas, se usa al subir de nivel
     public void incrementarMonedas(int cantidad){
         monedas = (TextView)findViewById(R.id.monedasActuales);
         monedasUsuario+=cantidad;
@@ -134,34 +141,50 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
 
     }
 
-
-    public void setVida(int vida) {
+//Establece la vida del jugador al salir de la tienda
+    public static void setVida(int v) {
         if (vida>=0) {
-            this.vida = vida;
+            vida = v;
         }else{
-            this.vida = 0;
+            vida = 0;
         }
+        bv.setProgress(vida,true);
     }
-    public int getMaxExperiencia(){
+    public static int getMaxExperiencia(){
         return maxExperiencia;
     }
-    public int getVida(){
+    public static int getVida(){
         return vida;
     }
-    public int getNivel(){
+    public static int getNivel(){
         return nivel;
     }
-    public int getExperiencia(){
+    public static int getExperiencia(){
         return experiencia;
     }
-    public int getMonedasUsuario() {
+
+    public static int getMaxVida() {
+        return maxVida;
+    }
+
+    public static int getMonedasUsuario() {
         return monedasUsuario;
     }
 
-    public void setMonedasUsuario(int monedasUsuario) {
-        this.monedasUsuario = monedasUsuario;
+    public  static void setMonedasUsuario(int m) {
+        monedasUsuario = m;
+        monedas.setText(""+ monedasUsuario);
     }
 
+    public static double getResistencia() {
+        return resistencia;
+    }
+
+    public  void setResistencia(double resistencia) {
+        this.resistencia = resistencia;
+    }
+
+//Para mostrar el menu de opciones
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
@@ -174,13 +197,16 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
         int id = item.getItemId();
         if(R.id.main==id) {
             Intent intent= new Intent(this,MainActivity.class);
-            startActivity(intent);
+            intent.setFlags(Intent.FLAG_ACTIVITY_REORDER_TO_FRONT);
+            startActivityIfNeeded(intent, 0);
         }else if (R.id.Perfil==id) {
             Toast.makeText(getApplicationContext(), "En Construccion...", Toast.LENGTH_SHORT).show();
-
         }else if (R.id.Tienda== id) {
-            Intent intent2= new Intent(this,TiendaBeta.class);
-            startActivity(intent2);
+            Intent intent= new Intent(this,TiendaBeta.class);
+            startActivity(intent);
+        }else if (R.id.menuAyuda == id) {
+            Intent intent= new Intent(this,menuAyuda.class);
+            startActivity(intent);
         }else if(R.id.Salir==id) {
             finishAffinity();
         }
@@ -188,6 +214,8 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
                 return super.onOptionsItemSelected(item);
 
     }
+
+
 
 
 

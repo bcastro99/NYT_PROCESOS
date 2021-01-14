@@ -14,6 +14,7 @@
         app:showAsAction="ifRoom"></item>
 
     <item android:id="@+id/Tienda" android:title="@string/tienda"></item>
+    <item android:id="@+id/menuAyuda" android:title="@string/menuAyuda"></item>
 
     <item
         android:id="@+id/Salir"
