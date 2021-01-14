@@ -26,12 +26,12 @@ public class BaseDeDatosSQL extends SQLiteOpenHelper{
         DB.execSQL(CREAR_TABLA_USUARIO);
         DB.execSQL(CREAR_TABLA_TAREAS);
 
-        x = new MainActivity();
+
         this.AuxVida = x.getVida();
         this.AuxExperiencia = x.getExperiencia();
 
 
-        DB.execSQL("INSERT INTO USUARIO VALUES(AuxVida,AuxExperiencia)");
+        DB.execSQL("INSERT INTO USUARIO VALUES(this.AuxVida,this.AuxExperiencia)");
 
     }
     @Override

@@ -2,8 +2,10 @@ package com.example.task_ovid;
 
 import android.content.Context;
 import android.content.Intent;
+import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
+import android.os.Vibrator;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
@@ -40,8 +42,8 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
     private static double resistencia=1;
     private static int monedasUsuario=0;
     private static int restaAux;
-    private BaseDeDatosSQL conexion;
-    private SQLiteDatabase DB;
+
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -53,9 +55,11 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
         tareasAdapter = new ArrayAdapter(this, R.layout.rowtext, tareas);
         lista.setAdapter(tareasAdapter);
         lista.setOnItemClickListener(this);
-        conexion = new BaseDeDatosSQL(getApplicationContext(), "DB_USUARIO", null, 1);
-        
+        BaseDeDatosSQL conexion = new BaseDeDatosSQL(this, "BD_USUARIOS", null, 1);
+
     }
+
+
 
     private void llenarTareas(){ //este método es para rellenar las listas, el 0 simboliza el contador
         tareas.add("* Hacer PCR 0");
@@ -166,6 +170,10 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
     }
     public static int getExperiencia(){
         return experiencia;
+    }
+
+    public static void  setExperiencia(int exp){
+        experiencia = exp;
     }
 
     public static int getMaxVida() {
