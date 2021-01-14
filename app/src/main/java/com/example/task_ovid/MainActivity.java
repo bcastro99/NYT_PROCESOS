@@ -2,6 +2,7 @@ package com.example.task_ovid;
 
 import android.content.Context;
 import android.content.Intent;
+import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -13,7 +14,7 @@ import android.widget.ListView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
-
+import com.example.task_ovid.BaseDeDatosSQL;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.math.MathUtils;
 
@@ -39,10 +40,8 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
     private static double resistencia=1;
     private static int monedasUsuario=0;
     private static int restaAux;
-
-
-    public MainActivity() {
-    }
+    private BaseDeDatosSQL conexion;
+    private SQLiteDatabase DB;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -54,8 +53,8 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
         tareasAdapter = new ArrayAdapter(this, R.layout.rowtext, tareas);
         lista.setAdapter(tareasAdapter);
         lista.setOnItemClickListener(this);
-
-
+        conexion = new BaseDeDatosSQL(getApplicationContext(), "DB_USUARIO", null, 1);
+        
     }
 
     private void llenarTareas(){ //este método es para rellenar las listas, el 0 simboliza el contador
