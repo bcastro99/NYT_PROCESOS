@@ -10,4 +10,5 @@
     <color name="fondo">#09cb7b</color>
     <color name="BarraVidaBorde">#A0A0A0</color>
     <color name="BarraVidaSalud">#CB3234</color>
+    <color name="background_footer">#90000000</color>
 </resources>

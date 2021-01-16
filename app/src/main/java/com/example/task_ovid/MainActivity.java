@@ -1,6 +1,5 @@
 package com.example.task_ovid;
 
-import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
@@ -15,7 +14,6 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.math.MathUtils;
 
 import java.util.ArrayList;
 
@@ -138,6 +136,7 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
 
             incrementarMonedas(100);
         }
+        bv.setProgress(vida,true);
     }
 //Incrementa las monedas, se usa al subir de nivel
     public void incrementarMonedas(int cantidad){
@@ -220,6 +219,8 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
                 return super.onOptionsItemSelected(item);
 
     }
+
+
 
 
 
