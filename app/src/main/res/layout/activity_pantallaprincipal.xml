@@ -133,7 +133,7 @@
         android:layout_marginEnd="33dp"
         android:layout_marginBottom="20dp"
         android:fontFamily="@font/ls_font"
-        android:text="NIVEL 1"
+        android:text="Nivel 1"
         android:textColor="#000000"
         android:textSize="25sp" />
     <LinearLayout

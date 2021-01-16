@@ -3,6 +3,7 @@ package com.example.task_ovid;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Environment;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
@@ -36,17 +37,17 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
 
     private static int maxExperiencia = 100;
     public  static int maxVida = 100;
-    private static int vida = maxVida;
+    private static int vida;
     private int experienciaTotal = 0;
     private static ProgressBar bv;
     private TextView nivelTexto;
-    private static int experiencia=0;
-    private static int nivel=1;
+    private static int experiencia;
+    private static int nivel;
     public  static ProgressBar be;
     private static TextView monedas;
     private ArrayAdapter<String> tareasAdapter;
     private static double resistencia=1;
-    private static int monedasUsuario=0;
+    private static int monedasUsuario;
     private static int restaAux;
 
 
@@ -56,55 +57,67 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_pantallaprincipal);
-        lista = findViewById(R.id.lista);
-        this.tareas = new ArrayList<>();
-        llenarTareas();
-        tareasAdapter = new ArrayAdapter(this, R.layout.rowtext, tareas);
-        lista.setAdapter(tareasAdapter);
-        lista.setOnItemClickListener(this);
         try {
             loadUser();
         } catch (IOException e) {
             e.printStackTrace();
         }
-
-
-
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_pantallaprincipal);
+        lista = findViewById(R.id.lista);
+        this.tareas = new ArrayList<>();
+        llenarTareas();
+        nivelTexto = (TextView)findViewById(R.id.NombreNivel);
+        nivelTexto.setText("NIVEL "+nivel);
+        incrementarMonedas(0);
+        bv=(ProgressBar)findViewById(R.id.Vida);
+        bv.setProgress(vida);
+        be=(ProgressBar)findViewById(R.id.Experiencia);
+        be.setProgress(experiencia);
+        tareasAdapter = new ArrayAdapter(this, R.layout.rowtext, tareas);
+        lista.setAdapter(tareasAdapter);
+        lista.setOnItemClickListener(this);
 
 
     }
 
 
-    private void saveUser(int vida, int experiencia, int nivel, int monedasUsuario ) throws IOException {
+    private void saveUser(int vida, int experiencia, int nivel, int monedasUsuario ) {
 
-        FileWriter fichero = new FileWriter("datosUsuario.txt");
-        BufferedWriter bw = new BufferedWriter(fichero);
+        try {
 
-        ArrayList<String> Datos = new ArrayList<>();
+            FileWriter fichero = new FileWriter(new File (getFilesDir(), "datosUsuario.txt"));
+            System.out.println(getFilesDir());
+            BufferedWriter bw = new BufferedWriter(fichero);
 
-        String Svida = valueOf(vida);
-        String Sexperiencia = valueOf(experiencia);
-        String Snivel = valueOf(nivel);
-        String SmonedasUsuario = valueOf(monedasUsuario);
-        Datos.add(Svida);
-        Datos.add(Sexperiencia);
-        Datos.add(Snivel);
-        Datos.add(SmonedasUsuario);
+            ArrayList<String> Datos = new ArrayList<>();
 
-        for (String guardar : Datos) {
-            bw.write(guardar);
-            bw.newLine();
-            bw.flush();
+            String Svida = valueOf(vida);
+            String Sexperiencia = valueOf(experiencia);
+            String Snivel = valueOf(nivel);
+            String SmonedasUsuario = valueOf(monedasUsuario);
+            Datos.add(Svida);
+            Datos.add(Sexperiencia);
+            Datos.add(Snivel);
+            Datos.add(SmonedasUsuario);
+
+            for (String guardar : Datos) {
+                bw.write(guardar);
+                bw.newLine();
+                bw.flush();
+            }
+
+            bw.close();
+            fichero.close();
+        } catch (IOException e) {
+
+            Toast.makeText(getApplicationContext(), "Error", Toast.LENGTH_LONG).show();
+            e.printStackTrace();
         }
-
-        bw.close();
-        fichero.close();
     }
 
     private void loadUser() throws IOException {
-        FileReader fichero = new FileReader("datosUsuario.txt");
+        FileReader fichero = new FileReader(new File (getFilesDir(), "datosUsuario.txt"));
         BufferedReader br = new BufferedReader(fichero);
         String values;
         ArrayList<String> Datos = new ArrayList<>();
@@ -175,7 +188,7 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
         }
 
     }
-//Acción que se ejecuta cuando se realiza una buena acción
+    //Acción que se ejecuta cuando se realiza una buena acción
     public void incrementarExperiencia(String t){
         be=(ProgressBar)findViewById(R.id.Experiencia);
         be.setMax(maxExperiencia);
@@ -190,7 +203,7 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
         subirNivel();
         be.setProgress(experiencia,true);
     }
-//Cuando sube de nivel el usuario se establece la barra de nivel y las monedas
+    //Cuando sube de nivel el usuario se establece la barra de nivel y las monedas
     public void subirNivel(){
         if (experiencia>=maxExperiencia){
             int extra = experiencia-maxExperiencia;
@@ -206,7 +219,7 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
             incrementarMonedas(100);
         }
     }
-//Incrementa las monedas, se usa al subir de nivel
+    //Incrementa las monedas, se usa al subir de nivel
     public void incrementarMonedas(int cantidad){
         monedas = (TextView)findViewById(R.id.monedasActuales);
         monedasUsuario+=cantidad;
@@ -214,7 +227,7 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
 
     }
 
-//Establece la vida del jugador al salir de la tienda
+    //Establece la vida del jugador al salir de la tienda
     public static void setVida(int v) {
         if (vida>=0) {
             vida = v;
@@ -257,7 +270,7 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
         this.resistencia = resistencia;
     }
 
-//Para mostrar el menu de opciones
+    //Para mostrar el menu de opciones
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
@@ -274,6 +287,10 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
             startActivityIfNeeded(intent, 0);
         }else if (R.id.Perfil==id) {
             Toast.makeText(getApplicationContext(), "En Construccion...", Toast.LENGTH_SHORT).show();
+            vida=100;
+            experiencia=0;
+            nivel=1;
+            monedasUsuario=0;
         }else if (R.id.Tienda== id) {
             Intent intent= new Intent(this,TiendaBeta.class);
             startActivity(intent);
@@ -281,17 +298,11 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
             Intent intent= new Intent(this,menuAyuda.class);
             startActivity(intent);
         }else if(R.id.Salir==id) {
-            try {
-                saveUser(vida, experiencia, nivel ,monedasUsuario);
-            } catch (IOException e) {
-
-                Toast.makeText(getApplicationContext(), "Error", Toast.LENGTH_LONG).show();
-                e.printStackTrace();
-            }
+            saveUser(vida, experiencia, nivel ,monedasUsuario);
             finishAffinity();
         }
 
-                return super.onOptionsItemSelected(item);
+        return super.onOptionsItemSelected(item);
 
     }
 
