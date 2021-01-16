@@ -17,7 +17,16 @@ import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.math.MathUtils;
 
+import java.io.BufferedReader;
+import java.io.BufferedWriter;
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
+import java.io.FileWriter;
+import java.io.IOException;
 import java.util.ArrayList;
+
+import static java.lang.String.valueOf;
 
 
 public class MainActivity extends AppCompatActivity implements AdapterView.OnItemClickListener {
@@ -41,6 +50,7 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
     private static int restaAux;
 
 
+
     public MainActivity() {
     }
 
@@ -54,7 +64,64 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
         tareasAdapter = new ArrayAdapter(this, R.layout.rowtext, tareas);
         lista.setAdapter(tareasAdapter);
         lista.setOnItemClickListener(this);
+        try {
+            loadUser();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
 
+
+
+
+
+    }
+
+
+    private void saveUser(int vida, int experiencia, int nivel, int monedasUsuario ) throws IOException {
+
+        FileWriter fichero = new FileWriter("datosUsuario.txt");
+        BufferedWriter bw = new BufferedWriter(fichero);
+
+        ArrayList<String> Datos = new ArrayList<>();
+
+        String Svida = valueOf(vida);
+        String Sexperiencia = valueOf(experiencia);
+        String Snivel = valueOf(nivel);
+        String SmonedasUsuario = valueOf(monedasUsuario);
+        Datos.add(Svida);
+        Datos.add(Sexperiencia);
+        Datos.add(Snivel);
+        Datos.add(SmonedasUsuario);
+
+        for (String guardar : Datos) {
+            bw.write(guardar);
+            bw.newLine();
+            bw.flush();
+        }
+
+        bw.close();
+        fichero.close();
+    }
+
+    private void loadUser() throws IOException {
+        FileReader fichero = new FileReader("datosUsuario.txt");
+        BufferedReader br = new BufferedReader(fichero);
+        String values;
+        ArrayList<String> Datos = new ArrayList<>();
+
+        while((values = br.readLine()) != null) {
+            Datos.add(values);
+        }
+        String v1 = Datos.get(0);
+        vida = Integer.parseInt(Datos.get(0));
+        experiencia = Integer.parseInt(Datos.get(1));
+        nivel = Integer.parseInt(Datos.get(2));
+        monedasUsuario = Integer.parseInt(Datos.get(3));
+        br.close();
+        fichero.close();
+
+        File ficheroABorrar = new File("datosUsuario.txt");
+        ficheroABorrar.delete();
 
     }
 
@@ -79,7 +146,7 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
         String[] parts = t.split(" ");
         //incrementar el contador y actualizar el string
         int cont = Integer.parseInt(parts[parts.length-1]) + 1;
-        parts[parts.length-1] = String.valueOf(cont);
+        parts[parts.length-1] = valueOf(cont);
         //une el string de nuevo para colocarlo en la lista
         String string = "";
         for (int i = 0; i <= parts.length-1; i++){
@@ -214,6 +281,13 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
             Intent intent= new Intent(this,menuAyuda.class);
             startActivity(intent);
         }else if(R.id.Salir==id) {
+            try {
+                saveUser(vida, experiencia, nivel ,monedasUsuario);
+            } catch (IOException e) {
+
+                Toast.makeText(getApplicationContext(), "Error", Toast.LENGTH_LONG).show();
+                e.printStackTrace();
+            }
             finishAffinity();
         }
 
