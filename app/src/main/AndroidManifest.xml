@@ -27,6 +27,7 @@
             </intent-filter>
         </activity>
         <activity android:name=".TiendaBeta" />
+        <activity android:name=".PerfilActivity"/>
     </application>
 
 </manifest>

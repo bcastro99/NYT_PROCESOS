@@ -1,5 +1,6 @@
 package com.example.task_ovid;
 
+import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
@@ -8,6 +9,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
@@ -37,11 +39,23 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
     private static double resistencia=1;
     private static int monedasUsuario=0;
     private static int restaAux;
+    public  static ImageView fotoPerfil;
+
+
 
 
     public MainActivity() {
     }
 
+    public static ImageView getFotoPerfil() {
+        return fotoPerfil;
+    }
+
+    public static void setFotoPerfil(ImageView fotoPerfil) {
+        MainActivity.fotoPerfil = fotoPerfil;
+    }
+
+    @SuppressLint("ResourceType")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -52,10 +66,10 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
         tareasAdapter = new ArrayAdapter(this, R.layout.rowtext, tareas);
         lista.setAdapter(tareasAdapter);
         lista.setOnItemClickListener(this);
-
+        fotoPerfil=(ImageView) findViewById(R.id.imageView);;
+        fotoPerfil.setImageResource(R.drawable.avatar2);
 
     }
-
     private void llenarTareas(){ //este método es para rellenar las listas, el 0 simboliza el contador
         tareas.add("* Hacer PCR 0");
         tareas.add("+ salir con mascarilla 0");
@@ -106,6 +120,7 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
         }
 
     }
+
 //Acción que se ejecuta cuando se realiza una buena acción
     public void incrementarExperiencia(String t){
         be=(ProgressBar)findViewById(R.id.Experiencia);
@@ -205,15 +220,22 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
             intent.setFlags(Intent.FLAG_ACTIVITY_REORDER_TO_FRONT);
             startActivityIfNeeded(intent, 0);
         }else if (R.id.Perfil==id) {
-            Toast.makeText(getApplicationContext(), "En Construccion...", Toast.LENGTH_SHORT).show();
+            Intent intent= new Intent(this,PerfilActivity.class);
+            intent.setFlags(Intent.FLAG_ACTIVITY_REORDER_TO_FRONT);
+            startActivityIfNeeded(intent, 0);
         }else if (R.id.Tienda== id) {
             Intent intent= new Intent(this,TiendaBeta.class);
             startActivity(intent);
         }else if (R.id.menuAyuda == id) {
             Intent intent= new Intent(this,menuAyuda.class);
+
+            fotoPerfil.setImageResource(R.drawable.avatar2);
             startActivity(intent);
         }else if(R.id.Salir==id) {
-            finishAffinity();
+
+                finishAffinity();
+
+
         }
 
                 return super.onOptionsItemSelected(item);

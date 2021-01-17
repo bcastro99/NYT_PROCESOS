@@ -5,26 +5,34 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.AdapterView;
 import android.widget.GridView;
-import android.widget.TextView;
+import android.widget.ImageView;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-public class PerfilActivity extends AppCompatActivity {
-    private GridView gridView;
-    private TextView mTextView;
-    private AdaptadorDePerfiles adaptador;
+public class PerfilActivity extends AppCompatActivity implements AdapterView.OnItemClickListener {
 
+private ImageView imagenPerfil;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_perfil);
-        gridView= (GridView) findViewById(R.id.grid);
-        adaptador= new AdaptadorDePerfiles(this);
-        gridView.setAdapter(adaptador);
+
+        /*
+        Seteando el adaptador al GridView
+         */
+        GridView gridview = (GridView) findViewById(R.id.grid);
+        gridview.setAdapter(new ImageAdapter(this));
+
+        /*
+        Creando una nueva escucha para los elementos del Grid
+         */
+        gridview.setOnItemClickListener(this);
 
 
-    }
+            };
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -59,4 +67,12 @@ public class PerfilActivity extends AppCompatActivity {
         }
 
 
+    @Override
+    public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+      ImageAdapter adapter = new ImageAdapter(this);
+
+      MainActivity.getFotoPerfil().setImageResource(adapter.getThumbId(position));
+        Intent i = new Intent(this,MainActivity.class);
+      startActivity(i);
+    }
 }

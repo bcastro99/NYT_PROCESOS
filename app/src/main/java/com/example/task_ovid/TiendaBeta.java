@@ -166,7 +166,10 @@ public class TiendaBeta extends AppCompatActivity {
             intent.setFlags(Intent.FLAG_ACTIVITY_REORDER_TO_FRONT);
             startActivityIfNeeded(intent, 0);
         }else if (R.id.Perfil==id) {
-            Toast.makeText(getApplicationContext(), "En Construccion...", Toast.LENGTH_SHORT).show();
+
+            Intent intent= new Intent(this,PerfilActivity.class);
+            intent.setFlags(Intent.FLAG_ACTIVITY_REORDER_TO_FRONT);
+            startActivityIfNeeded(intent, 0);
         }else if (R.id.menuAyuda == id) {
                 Intent intent= new Intent(this,menuAyuda.class);
                 startActivity(intent);
