@@ -39,20 +39,21 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
     private static double resistencia=1;
     private static int monedasUsuario=0;
     private static int restaAux;
-    public  static ImageView fotoPerfil;
+    public  ImageView fotoPerfil;
 
 
 
 
     public MainActivity() {
+
     }
 
-    public static ImageView getFotoPerfil() {
+    public  ImageView getFotoPerfil() {
         return fotoPerfil;
     }
 
-    public static void setFotoPerfil(ImageView fotoPerfil) {
-        MainActivity.fotoPerfil = fotoPerfil;
+    public  void setFotoPerfil(ImageView fotoPerfil) {
+       this.fotoPerfil=fotoPerfil;
     }
 
     @SuppressLint("ResourceType")
@@ -67,7 +68,16 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
         lista.setAdapter(tareasAdapter);
         lista.setOnItemClickListener(this);
         fotoPerfil=(ImageView) findViewById(R.id.imageView);;
-        fotoPerfil.setImageResource(R.drawable.avatar2);
+        int valor=0 ;
+        try {
+             valor = getIntent().getExtras().getInt("fotoPerfil");
+             fotoPerfil.setImageResource(valor);
+        } catch (Exception e){
+
+        }
+
+
+
 
     }
     private void llenarTareas(){ //este método es para rellenar las listas, el 0 simboliza el contador

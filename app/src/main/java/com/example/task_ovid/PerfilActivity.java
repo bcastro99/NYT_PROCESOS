@@ -70,9 +70,10 @@ private ImageView imagenPerfil;
     @Override
     public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
       ImageAdapter adapter = new ImageAdapter(this);
-
-      MainActivity.getFotoPerfil().setImageResource(adapter.getThumbId(position));
-        Intent i = new Intent(this,MainActivity.class);
+      MainActivity x= new MainActivity();
+      Integer iden= adapter.getThumbId(position);
+      Intent i = new Intent(this,MainActivity.class);
+      i.putExtra("fotoPerfil", iden);
       startActivity(i);
     }
 }
